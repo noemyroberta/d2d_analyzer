@@ -20,7 +20,7 @@ class Lexer {
       default:
         if (char == '_' || char == char.toUpperCase()) {
           final buffer = StringBuffer(char);
-          while (!_isAtEnd() && (_isAlphaNumeric(peek()!))) {
+          while (!_isAtEnd() && (_isAlphaNumeric(peek() ?? ''))) {
             buffer.write(advance());
           }
           return Token(TokenType.IDENTIFIER, buffer.toString());
