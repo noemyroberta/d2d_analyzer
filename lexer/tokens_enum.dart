@@ -1,3 +1,5 @@
+part of d2d_analyzer;
+
 enum TokenType {
   CLASS,
   IDENTIFIER,
