@@ -1,8 +1,9 @@
 part of d2d_analyzer;
 
 enum TokenType {
-  CLASS,
+  KEYWORD,
   IDENTIFIER,
+  STRINGS,
   OPEN_BRACE,
   CLOSE_BRACE,
   SEMICOLON,
