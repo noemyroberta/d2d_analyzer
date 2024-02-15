@@ -4,6 +4,25 @@ class Lexer {
   final String input;
   int _currentPosition = 0;
 
+  static final Set<String> keywords = {
+    'class',
+    'print',
+    'void',
+    'abstract',
+    'interface',
+    'this',
+    'null',
+    'new',
+    'final',
+    'String',
+    'int',
+    'double',
+    'float',
+    'const',
+    'super',
+    'return',
+  };
+
   Lexer(this.input);
 
   Token? getNextToken() {
@@ -23,11 +42,15 @@ class Lexer {
           while (!_isAtEnd() && (_isAlphaNumeric(peek() ?? ''))) {
             buffer.write(advance());
           }
-          return Token(TokenType.IDENTIFIER, buffer.toString());
+          final lexeme = buffer.toString();
+          final type = _isNotAKeyword(lexeme) //
+              ? TokenType.INVALID
+              : TokenType.IDENTIFIER;
+
+          return Token(type, lexeme);
         }
-        break;
+        return Token(TokenType.INVALID, char);
     }
-    return null;
   }
 
   String? peek() {
@@ -39,6 +62,8 @@ class Lexer {
     if (!_isAtEnd()) _currentPosition++;
     return input[_currentPosition - 1];
   }
+
+  bool _isNotAKeyword(lexeme) => !keywords.contains(lexeme);
 
   bool _isAtEnd() => _currentPosition >= input.length;
 
