@@ -1,21 +1,25 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import '../d2d_analyzer.dart';
 
 Future<void> main() async {
   try {
-   // var file = File('file_input/file.txt');
-    //var contents = await file.readAsString();
+    var file = File('file_input/file.txt');
+    var linesStream = file
+        .openRead() //
+        .transform(utf8.decoder) //
+        .transform(LineSplitter());
 
-    final input = '''
-    class MyClass {
-      int x;
-      String name;
-    }
-  ''';
-    print(input);
-    executeLexer(input);
+    linesStream.listen((line) {
+      print('Line: $line');
+      executeLexer(line);
+    }, onDone: () {
+      print('File reading complete.');
+    }, onError: (e) {
+      print('Error reading file: $e');
+    });
   } catch (e) {
     print('Error reading file: $e');
   }
