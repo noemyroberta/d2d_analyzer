@@ -7,11 +7,13 @@ class Lexer {
   Lexer(this.input);
 
   Token? getNextToken() {
+    _skipWhitespace();
+
     if (_isAtEnd()) return null;
 
     final char = input[_currentPosition++];
     switch (char) {
-      case '.': 
+      case '.':
         return Token(TokenType.PERIOD, char);
       case '{':
         return Token(TokenType.OPEN_BRACE, char);
@@ -21,16 +23,23 @@ class Lexer {
         return Token(TokenType.SEMICOLON, char);
       default:
         final buffer = StringBuffer(char);
-        while (!_isAtEnd() && (_isAlphaNumeric(peek() ?? ''))) {
+        while (!_isAtEnd() && (_isAlphaNumeric(peek() ?? ""))) {
           buffer.write(advance());
         }
         final lexeme = buffer.toString();
-
-        if (TokenKeywordType.values.contains(lexeme.toUpperCase())) {
+        if (_isKeyword(lexeme)) {
           return Token(TokenType.KEYWORD, lexeme);
+        } else if (_isIdentifier(lexeme)) {
+          return Token(TokenType.IDENTIFIER, lexeme);
         }
-        return Token(TokenType.IDENTIFIER, lexeme);
+        return Token(TokenType.INVALID, lexeme);
     }
+  }
+
+  bool _isKeyword(lexeme) {
+    return (TokenKeywordType.values.firstWhere((e) => e.displayTitle == lexeme,
+            orElse: () => TokenKeywordType.UNKNOWN) !=
+        TokenKeywordType.UNKNOWN);
   }
 
   String? peek() {
@@ -43,7 +52,18 @@ class Lexer {
     return input[_currentPosition - 1];
   }
 
+  void _skipWhitespace() {
+    while (!_isAtEnd() && _isWhitespace(peek() ?? '')) {
+      advance();
+    }
+  }
+
   bool _isAtEnd() => _currentPosition >= input.length;
 
+  bool _isIdentifier(String str) =>
+      RegExp(r'^[a-zA-Z_][a-zA-Z0-9_]*$').hasMatch(str);
   bool _isAlphaNumeric(String char) => RegExp(r'[a-zA-Z0-9_]').hasMatch(char);
+
+  bool _isWhitespace(String char) =>
+      char == ' ' || char == '\t' || char == '\n' || char == '\r';
 }
