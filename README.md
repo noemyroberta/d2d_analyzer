@@ -34,6 +34,8 @@ e estará pronto!
 
 **ATENÇÃO**: Tenha certeza de que está executando o comando acima na raiz do projeto.
 
+**ATENÇÃO 2.**: Caso o pacote `Dart SDK` não esteja sendo reconhecido, tente reiniciar o seu sistema e tente novamente.
+
 ## Uso & Resultados Esperados
 
 O analisador léxico verifica o código-fonte Dart escrito no arquivo `file.txt` e retorna um _log_ com a análise de _token_ e suas atribuições para cada linha do arquivo (atual com 10 linhas).
