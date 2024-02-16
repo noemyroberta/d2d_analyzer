@@ -1,3 +1,6 @@
 class MyClass {
-    print('This is a class');
+    String name;
+    int age;
+
+    const MyClass(this.name, this.age);
 }
