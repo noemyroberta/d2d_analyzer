@@ -12,9 +12,11 @@ Future<void> main() async {
         .transform(utf8.decoder) //
         .transform(LineSplitter());
 
+    int lineIndex = 0;
     linesStream.listen((line) {
+      lineIndex++;
       print('Line: $line');
-      executeLexer(line);
+      executeLexer(line, lineIndex);
     }, onDone: () {
       print('File reading complete.');
     }, onError: (e) {
@@ -25,8 +27,8 @@ Future<void> main() async {
   }
 }
 
-void executeLexer(String fileInput) {
-  final lexer = Lexer(fileInput);
+void executeLexer(String fileInput, int lineIndex) {
+  final lexer = Lexer(fileInput, lineIndex);
   Token? token;
   do {
     token = lexer.getNextToken();

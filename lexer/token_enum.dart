@@ -17,9 +17,10 @@ enum TokenType {
 class Token {
   final TokenType type;
   final String lexeme;
+  final int lineIndex;
 
-  Token(this.type, this.lexeme);
+  Token(this.type, this.lexeme, this.lineIndex);
 
   @override
-  String toString() => '$type $lexeme';
+  String toString() => '$type $lexeme $lineIndex';
 }

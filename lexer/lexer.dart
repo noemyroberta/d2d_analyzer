@@ -2,9 +2,10 @@ part of d2d_analyzer;
 
 class Lexer {
   final String input;
+  final int lineIndex;
   int _currentPosition = 0;
 
-  Lexer(this.input);
+  Lexer(this.input, this.lineIndex);
 
   Token? getNextToken() {
     _skipWhitespace();
@@ -14,19 +15,19 @@ class Lexer {
     final char = input[_currentPosition++];
     switch (char) {
       case '.':
-        return Token(TokenType.PERIOD, char);
+        return Token(TokenType.PERIOD, char, lineIndex);
       case ',':
-        return Token(TokenType.COMMA, char);
+        return Token(TokenType.COMMA, char, lineIndex);
       case '(':
-        return Token(TokenType.OPEN_PAREN, char);
+        return Token(TokenType.OPEN_PAREN, char, lineIndex);
       case ')':
-        return Token(TokenType.CLOSE_PAREN, char);
+        return Token(TokenType.CLOSE_PAREN, char, lineIndex);
       case '{':
-        return Token(TokenType.OPEN_BRACE, char);
+        return Token(TokenType.OPEN_BRACE, char, lineIndex);
       case '}':
-        return Token(TokenType.CLOSE_BRACE, char);
+        return Token(TokenType.CLOSE_BRACE, char, lineIndex);
       case ';':
-        return Token(TokenType.SEMICOLON, char);
+        return Token(TokenType.SEMICOLON, char, lineIndex);
       default:
         final buffer = StringBuffer(char);
         while (!_isAtEnd() && (_isAlphaNumeric(peek() ?? ""))) {
@@ -34,11 +35,11 @@ class Lexer {
         }
         final lexeme = buffer.toString();
         if (_isKeyword(lexeme)) {
-          return Token(TokenType.KEYWORD, lexeme);
+          return Token(TokenType.KEYWORD, lexeme, lineIndex);
         } else if (_isIdentifier(lexeme)) {
-          return Token(TokenType.IDENTIFIER, lexeme);
+          return Token(TokenType.IDENTIFIER, lexeme, lineIndex);
         }
-        return Token(TokenType.INVALID, lexeme);
+        return Token(TokenType.INVALID, lexeme, lineIndex);
     }
   }
 
