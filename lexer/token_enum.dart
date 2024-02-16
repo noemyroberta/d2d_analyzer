@@ -11,6 +11,8 @@ enum TokenType {
   COMMA,
   OPEN_PAREN,
   CLOSE_PAREN,
+  DOUBLE_QUOT,
+  DOLLAR_SIGN,
   INVALID,
 }
 

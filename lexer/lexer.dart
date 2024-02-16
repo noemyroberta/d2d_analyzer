@@ -28,6 +28,10 @@ class Lexer {
         return Token(TokenType.CLOSE_BRACE, char, lineIndex);
       case ';':
         return Token(TokenType.SEMICOLON, char, lineIndex);
+      case '"':
+        return Token(TokenType.DOUBLE_QUOT, char, lineIndex);
+      case '\$':
+        return Token(TokenType.DOLLAR_SIGN, char, lineIndex);
       default:
         final buffer = StringBuffer(char);
         while (!_isAtEnd() && (_isAlphaNumeric(peek() ?? ""))) {
