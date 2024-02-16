@@ -3,4 +3,8 @@ class MyClass {
     int age;
 
     const MyClass(this.name, this.age);
+
+    String toString() {
+        return "$name, $age";
+    }
 }
