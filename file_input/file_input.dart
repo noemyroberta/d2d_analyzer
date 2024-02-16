@@ -15,7 +15,6 @@ Future<void> main() async {
     int lineIndex = 0;
     linesStream.listen((line) {
       lineIndex++;
-      //print('Line: $line');
       executeLexer(line, lineIndex);
     }, onDone: () {
       print('File reading complete.');
