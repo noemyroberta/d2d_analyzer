@@ -6,7 +6,7 @@ import 'd2d_analyzer.dart';
 
 Future<void> main() async {
   try {
-    var file = File('file_input/file.txt');
+    var file = File('file.txt');
     var linesStream = file
         .openRead() //
         .transform(utf8.decoder) //
