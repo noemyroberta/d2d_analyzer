@@ -8,6 +8,9 @@ enum TokenType {
   CLOSE_BRACE,
   SEMICOLON,
   PERIOD,
+  COMMA,
+  OPEN_PAREN,
+  CLOSE_PAREN,
   INVALID,
 }
 

@@ -15,6 +15,12 @@ class Lexer {
     switch (char) {
       case '.':
         return Token(TokenType.PERIOD, char);
+      case ',':
+        return Token(TokenType.COMMA, char);
+      case '(':
+        return Token(TokenType.OPEN_PAREN, char);
+      case ')':
+        return Token(TokenType.CLOSE_PAREN, char);
       case '{':
         return Token(TokenType.OPEN_BRACE, char);
       case '}':
