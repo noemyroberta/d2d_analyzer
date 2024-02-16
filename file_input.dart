@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import '../d2d_analyzer.dart';
+import 'd2d_analyzer.dart';
 
 Future<void> main() async {
   try {
