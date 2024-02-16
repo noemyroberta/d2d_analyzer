@@ -24,5 +24,5 @@ class Token {
   Token(this.type, this.lexeme, this.lineIndex);
 
   @override
-  String toString() => 'Type: $type | Lexeme: $lexeme | Line: $lineIndex';
+  String toString() => '$type | Lexeme: $lexeme | Line: $lineIndex';
 }
