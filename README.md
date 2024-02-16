@@ -12,7 +12,7 @@ Analisador léxico de Dart para Dart.
 
 ### Passo 1 - Clone o repositório
 
-Clone esse repositório e cole no seu terminal o seguinte comando:
+Clone esse repositório colando no seu terminal o seguinte comando:
 
 ``
 git clone https://github.com/noemyroberta/d2d_analyzer.git
