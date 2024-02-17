@@ -2,12 +2,6 @@
 
 Analisador léxico de Dart para Dart.
 
-## Integrantes
-
-- Noemy Roberta - [@noemyroberta](https://github.com/noemyroberta/);
-- Cleyfane Auanny - [@cleyfaneauanny](https://github.com/cleyfaneauanny);
-- Wemilly Maria - [@wemillymaria](https://github.com/wemillymaria/);
-
 ## Instalação & Funcionamento
 
 ### Passo 1 - Clone o repositório
