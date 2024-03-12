@@ -2,16 +2,9 @@ part of d2d_analyzer;
 
 enum TokenType {
   KEYWORD,
+  OPERATOR,
+  STRING,
   IDENTIFIER,
-  STRINGS,
-  OPEN_BRACE,
-  CLOSE_BRACE,
-  SEMICOLON,
-  PERIOD,
-  COMMA,
-  OPEN_PAREN,
-  CLOSE_PAREN,
-  DOUBLE_QUOT,
   DOLLAR_SIGN,
   INVALID,
 }
