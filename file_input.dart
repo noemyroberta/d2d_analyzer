@@ -29,9 +29,11 @@ Future<void> main() async {
 void executeLexer(String fileInput, int lineIndex) {
   final lexer = Lexer(fileInput, lineIndex);
   Token? token;
+  List<Token> tokenList = [];
   do {
     token = lexer.getNextToken();
     if (token != null && token.type != TokenType.INVALID) {
+      tokenList.add(token);
       print(token);
     } else if (token != null) {
       print('Invalid token: ${token.lexeme}');
