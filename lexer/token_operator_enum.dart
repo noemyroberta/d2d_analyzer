@@ -13,4 +13,5 @@ enum TokenOperatorType {
   ADDITIVE_SUM,
   ADDITIVE_SUB,
   MULTIPLICATIVE,
+  ATTRIBUTION,
 }

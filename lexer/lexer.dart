@@ -15,23 +15,23 @@ class Lexer {
     final char = input[_currentPosition++];
     switch (char) {
       case '.':
-        return Token(TokenType.PERIOD, char, lineIndex);
+        return Token(TokenType.OPERATOR, char, lineIndex);
       case ',':
-        return Token(TokenType.COMMA, char, lineIndex);
+        return Token(TokenType.OPERATOR, char, lineIndex);
       case '(':
-        return Token(TokenType.OPEN_PAREN, char, lineIndex);
+        return Token(TokenType.OPERATOR, char, lineIndex);
       case ')':
-        return Token(TokenType.CLOSE_PAREN, char, lineIndex);
+        return Token(TokenType.OPERATOR, char, lineIndex);
       case '{':
-        return Token(TokenType.OPEN_BRACE, char, lineIndex);
+        return Token(TokenType.OPERATOR, char, lineIndex);
       case '}':
-        return Token(TokenType.CLOSE_BRACE, char, lineIndex);
+        return Token(TokenType.OPERATOR, char, lineIndex);
       case ';':
-        return Token(TokenType.SEMICOLON, char, lineIndex);
+        return Token(TokenType.OPERATOR, char, lineIndex);
       case '"':
-        return Token(TokenType.DOUBLE_QUOT, char, lineIndex);
+        return Token(TokenType.OPERATOR, char, lineIndex);
       case '\$':
-        return Token(TokenType.DOLLAR_SIGN, char, lineIndex);
+        return Token(TokenType.SPECIAL_CHAR, char, lineIndex);
       default:
         final buffer = StringBuffer(char);
         while (!_isAtEnd() && (_isAlphaNumeric(peek() ?? ""))) {

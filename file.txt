@@ -1,6 +1,6 @@
 class MyClass {
     String name;
-    int age;
+    int age = 12;
 
     const MyClass(this.name, this.age);
 

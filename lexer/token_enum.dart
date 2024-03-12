@@ -6,6 +6,7 @@ enum TokenType {
   STRING,
   IDENTIFIER,
   INVALID,
+  SPECIAL_CHAR,
 }
 
 class Token {
