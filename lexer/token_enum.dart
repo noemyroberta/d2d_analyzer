@@ -7,7 +7,7 @@ enum TokenType {
   IDENTIFIER,
   INVALID,
   SPECIAL_CHAR,
-  LITERAL,
+  CONSTANT,
 }
 
 class Token {
