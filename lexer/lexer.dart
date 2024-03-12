@@ -30,6 +30,10 @@ class Lexer {
         return Token(TokenType.OPERATOR, char, lineIndex);
       case '"':
         return Token(TokenType.OPERATOR, char, lineIndex);
+      case '=':
+        return Token(TokenType.OPERATOR, char, lineIndex);
+      case '@':
+        return Token(TokenType.SPECIAL_CHAR, char, lineIndex);
       case '\$':
         return Token(TokenType.SPECIAL_CHAR, char, lineIndex);
       default:
@@ -42,8 +46,8 @@ class Lexer {
           return Token(TokenType.KEYWORD, lexeme, lineIndex);
         } else if (_isIdentifier(lexeme)) {
           return Token(TokenType.IDENTIFIER, lexeme, lineIndex);
-        } else if (_isLiteral(lexeme)) {
-          return Token(TokenType.LITERAL, lexeme, lineIndex);
+        } else if (_isConstant(lexeme)) {
+          return Token(TokenType.CONSTANT, lexeme, lineIndex);
         }
         return Token(TokenType.INVALID, lexeme, lineIndex);
     }
@@ -77,6 +81,12 @@ class Lexer {
       RegExp(r'^[a-zA-Z_][a-zA-Z0-9_]*$').hasMatch(str);
 
   bool _isAlphaNumeric(String char) => RegExp(r'[a-zA-Z0-9_]').hasMatch(char);
+
+  bool _isConstant(String char) {
+    return RegExp(r"(-?\d+(\.\d+)?([eE][+-]?\d+)?)").hasMatch(char) ||
+        RegExp(r"\b(true|false)\b").hasMatch(char) ||
+        RegExp(r"\b(null)\b").hasMatch(char);
+  }
 
   bool _isWhitespace(String char) =>
       char == ' ' || char == '\t' || char == '\n' || char == '\r';
