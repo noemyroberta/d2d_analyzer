@@ -42,6 +42,8 @@ class Lexer {
           return Token(TokenType.KEYWORD, lexeme, lineIndex);
         } else if (_isIdentifier(lexeme)) {
           return Token(TokenType.IDENTIFIER, lexeme, lineIndex);
+        } else if (_isLiteral(lexeme)) {
+          return Token(TokenType.LITERAL, lexeme, lineIndex);
         }
         return Token(TokenType.INVALID, lexeme, lineIndex);
     }
@@ -73,6 +75,7 @@ class Lexer {
 
   bool _isIdentifier(String str) =>
       RegExp(r'^[a-zA-Z_][a-zA-Z0-9_]*$').hasMatch(str);
+
   bool _isAlphaNumeric(String char) => RegExp(r'[a-zA-Z0-9_]').hasMatch(char);
 
   bool _isWhitespace(String char) =>
