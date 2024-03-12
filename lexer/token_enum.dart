@@ -5,7 +5,6 @@ enum TokenType {
   OPERATOR,
   STRING,
   IDENTIFIER,
-  DOLLAR_SIGN,
   INVALID,
 }
 
